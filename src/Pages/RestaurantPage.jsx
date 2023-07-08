@@ -7,7 +7,7 @@ const RestaurantPage = () => {
   const { selectedRestaurant, getRestaurant, addReviewHandler } =
     useContext(DataContext);
   const [addReviewState, setAddReviewState] = useState({
-    revName: `TheRandomUser - ${Math.random() * 100}`,
+    revName: `TheRandomUser - ${Math.round(Math.random() * 100)}`,
     pp: 'https://picsum.photos/200',
     comment: '',
     rating: 0,
