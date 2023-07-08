@@ -25,6 +25,15 @@ export const DataProvider = ({ children }) => {
       ...tempSelectedRestaurant.ratings,
       review,
     ];
+    tempSelectedRestaurant.averageRating =
+      Math.round(
+        (10 *
+          tempSelectedRestaurant.ratings.reduce(
+            (totalVal, currentRating) => totalVal + currentRating.rating,
+            0
+          )) /
+          tempSelectedRestaurant.ratings.length
+      ) / 10;
     setSelectedRestaurant(tempSelectedRestaurant);
 
     setRestaurantsDataState((prevState) =>

@@ -46,16 +46,7 @@ const RestaurantPage = () => {
               </p>
               <p>Address: {selectedRestaurant.address}</p>
               <p>Phone: {selectedRestaurant.phone}</p>
-              <p>
-                Avg Rating:{' '}
-                {Math.round(
-                  selectedRestaurant.ratings.reduce(
-                    (totalVal, currentRating) =>
-                      totalVal + currentRating.rating,
-                    0
-                  ) / selectedRestaurant.ratings.length
-                )}
-              </p>
+              <p>Avg Rating: {selectedRestaurant.averageRating}</p>
             </div>
             {/* Add Review Section */}
             <div>
