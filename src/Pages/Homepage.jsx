@@ -51,7 +51,6 @@ const Homepage = () => {
                             <img
                               src={item.imgSrc}
                               className='card-img-top'
-                              style={{ maxHeight: '150px' }}
                               alt={item.name}
                             />
                             <div className='card-body'>

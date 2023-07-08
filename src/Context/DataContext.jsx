@@ -10,6 +10,36 @@ export const DataProvider = ({ children }) => {
   const [currentCuisine, setCurrentCuisine] = useState();
   const [selectedRestaurant, setSelectedRestaurant] = useState();
 
+  const getRestaurant = (restId) => {
+    setSelectedRestaurant(
+      restaurantsDataState.find(
+        (restaurant) => restaurant.id.toString() === restId
+      )
+    );
+  };
+
+  const addReviewHandler = (restId, review) => {
+    console.log(restId, review);
+    const tempSelectedRestaurant = { ...selectedRestaurant };
+    tempSelectedRestaurant.ratings = [
+      ...tempSelectedRestaurant.ratings,
+      review,
+    ];
+    setSelectedRestaurant(tempSelectedRestaurant);
+
+    setRestaurantsDataState((prevState) =>
+      prevState.reduce(
+        (restData, currentData) =>
+          currentData.id !== Number(restId)
+            ? [...restData, currentData]
+            : [...restData, tempSelectedRestaurant],
+        []
+      )
+    );
+
+    console.log(selectedRestaurant);
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -19,6 +49,9 @@ export const DataProvider = ({ children }) => {
         setRestaurantsDataState,
         currentCuisine,
         setCurrentCuisine,
+        getRestaurant,
+        selectedRestaurant,
+        addReviewHandler,
       }}
     >
       {children}
