@@ -118,7 +118,7 @@ const RestaurantPage = () => {
               <div className='d-flex align-items-center mb-3'>
                 <label htmlFor='rating'>Rating:</label>
                 <select
-                  defaultValue={addReviewState.rating}
+                  value={addReviewState.rating}
                   onChange={(event) => {
                     addReviewstateHandler(event);
                   }}
