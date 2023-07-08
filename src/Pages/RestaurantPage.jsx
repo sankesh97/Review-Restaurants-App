@@ -118,21 +118,23 @@ const RestaurantPage = () => {
               <div className='d-flex align-items-center mb-3'>
                 <label htmlFor='rating'>Rating:</label>
                 <select
-                  onClick={(event) => {
+                  defaultValue={addReviewState.rating}
+                  onChange={(event) => {
                     addReviewstateHandler(event);
                   }}
                   id='rating'
                   className='form-select ms-2'
                 >
-                  <option value='1'>One</option>
-                  <option value='2'>Two</option>
-                  <option value='3'>Three</option>
-                  <option value='4'>Four</option>
-                  <option value='5'>Five</option>
+                  <option value='0'>0</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
                 </select>
               </div>
               <div className='d-flex align-items-center mb-3'>
-                <label htmlFor='rating'>Comment:</label>
+                <label htmlFor='comment'>Comment:</label>
                 <input
                   onChange={(event) => {
                     addReviewstateHandler(event);
@@ -140,6 +142,7 @@ const RestaurantPage = () => {
                   type='text'
                   className='form-control ms-2'
                   id='comment'
+                  value={addReviewState.comment}
                 />
               </div>
             </div>
@@ -150,6 +153,9 @@ const RestaurantPage = () => {
                 className='btn btn-primary'
                 onClick={() => {
                   addReviewHandler(restId, addReviewState);
+                  setAddReviewState((prevState) => {
+                    return { ...prevState, comment: '', rating: 0 };
+                  });
                 }}
               >
                 Submit
